@@ -1,0 +1,67 @@
+<div class="mb-lg container " >
+  <div class="pull-let col-md-3">
+      <!-- <input *ngIf="config.filtering" placeholder="Filter all columns" [ngTableFiltering]="config.filtering" class="form-control" (tableChanged)="onChangeTable(config)" /> -->
+      <input class="form-control" type="text" name="search" placeholder="search" [(ngModel)]="filter">
+  </div>
+</div>
+<div class="panel panel-default panel1 container">
+  <div class="col-md-12 col-xs-12 customer">
+      <h4> Details</h4>
+  </div>
+  <div class="row">
+      <div class="col-md-12 col-xs-12 table-responsive">
+          <table class="table table-striped">
+              <thead>
+                  <tr class="th-class">
+                      <td>
+                      </td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                  </tr>
+                  <tr>
+                      <th class="th-class" (click)="sorting('name')">Name
+                          <i class="sort-icon fa" *ngIf="key=='name'" aria-hidden="true" [ngClass]="{'fa-chevron-down':!reverse,'fa-chevron-up':reverse }"></i>
+                      </th>
+                      <th class="th-class" (click)="sorting('username')">Company Name
+                          <i class="sort-icon fa" *ngIf="key=='username'" aria-hidden="true" [ngClass]="{' fa-chevron-down':!reverse,' fa-chevron-up':reverse }"></i>
+                      </th>
+                      <!-- <th class="th-class" (click)="sorting('address.city')">address.city
+                          <i class="sort-icon fa" *ngIf="key=='address.city'" aria-hidden="true" [ngClass]="{' fa-chevron-down':!reverse,' fa-chevron-up':reverse }"></i>
+                      </th> -->
+                      <th class="th-class" (click)="sorting('phone')">Phone
+                          <i class="sort-icon fa" *ngIf="key=='phone'" aria-hidden="true" [ngClass]="{' fa-chevron-down':!reverse,' fa-chevron-up':reverse }"></i>
+                      </th>
+                      <!-- <th class="th-class" (click)="sorting('address.zipcode')">Zip Code
+                          <i class="sort-icon fa" *ngIf="key=='address.zipcode'" aria-hidden="true" [ngClass]="{' fa-chevron-down':!reverse,' fa-chevron-up':reverse }"></i>
+                      </th> -->
+                  </tr>
+              </thead>
+              <tbody>
+
+                  <tr *ngFor="let user of tableData| 
+                  orderBy : key:reverse |filter : filter">
+
+
+                      <td class="td-class">{{user.name}} {{user.lastName}}</td>
+                      <td class="td-class">{{user.username}}</td>
+                      <!-- <td class="td-class">{{user.address.city}}</td> -->
+                      <td class="td-class">{{user.phone}}</td>
+                      <!-- <td class="td-class">{{user.address.zipcode}}</td> -->
+                  </tr>
+
+
+                  <!-- first row end -->
+                  <!-- second row -->
+
+              </tbody>
+          </table>
+      </div>
+
+
+  </div>
+</div>
+    
